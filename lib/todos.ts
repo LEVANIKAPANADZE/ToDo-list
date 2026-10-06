@@ -1,1 +1,1 @@
-const todos = ["Study", "Clean up the room"];
+export const todos = ["Study", "Clean up the room"];
