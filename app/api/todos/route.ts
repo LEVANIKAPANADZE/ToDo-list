@@ -1,9 +1,5 @@
 import { todos } from "@/lib/todos";
 
-export async function GET() {
-  return Response.json(todos);
-}
-
 export async function POST(request: Request) {
   const todo = await request.json();
 
