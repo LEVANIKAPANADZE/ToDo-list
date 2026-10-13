@@ -1,9 +1,10 @@
 type InputProps = {
   todo: string;
   setTodo: React.Dispatch<React.SetStateAction<string>>;
+  handleAdd: () => void;
 };
 
-export default function Input({ todo, setTodo }: InputProps) {
+export default function Input({ todo, setTodo, handleAdd }: InputProps) {
   console.log(todo);
 
   return (
@@ -15,7 +16,7 @@ export default function Input({ todo, setTodo }: InputProps) {
         onChange={(e) => setTodo(e.target.value)}
       />
 
-      <button>Add</button>
+      <button onClick={handleAdd}>Add</button>
     </div>
   );
 }
