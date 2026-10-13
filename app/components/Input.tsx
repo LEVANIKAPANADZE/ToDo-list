@@ -14,6 +14,8 @@ export default function Input({ todo, setTodo }: InputProps) {
         value={todo}
         onChange={(e) => setTodo(e.target.value)}
       />
+
+      <button>Add</button>
     </div>
   );
 }
