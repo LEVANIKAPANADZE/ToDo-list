@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Input from "./components/Input";
+import List from "./components/List";
 
 export default function Home() {
   const [todo, setTodo] = useState("");
@@ -21,6 +22,8 @@ export default function Home() {
   return (
     <div>
       <Input todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
+
+      <List />
     </div>
   );
 }

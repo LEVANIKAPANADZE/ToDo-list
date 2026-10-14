@@ -5,8 +5,6 @@ type InputProps = {
 };
 
 export default function Input({ todo, setTodo, handleAdd }: InputProps) {
-  console.log(todo);
-
   return (
     <div>
       <input
