@@ -1,5 +1,18 @@
-import React from "react";
+type Todo = {
+  id: number;
+  todo: string;
+};
 
-export default function List() {
-  return <div>List</div>;
+type ListProps = {
+  data: Todo[];
+};
+
+export default function List({ data }: ListProps) {
+  return (
+    <div>
+      {data.map((element) => (
+        <span key={element.id}>{element.todo}</span>
+      ))}
+    </div>
+  );
 }
