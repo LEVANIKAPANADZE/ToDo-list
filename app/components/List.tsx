@@ -11,7 +11,7 @@ export default function List({ data }: ListProps) {
   return (
     <div>
       {data.map((element) => (
-        <div>
+        <div key={element.id}>
           <input type="checkbox" />
           <span key={element.id}>{element.todo}</span>
         </div>
