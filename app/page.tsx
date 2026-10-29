@@ -48,6 +48,8 @@ export default function Home() {
       <Input todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
 
       <List data={data} />
+
+      <span>Drag and drop to reorder list</span>
     </div>
   );
 }

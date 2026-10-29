@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
+import { Josefin_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
+
+const josefinSans = Josefin_Sans({
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Todo App",
@@ -18,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="min-h-screen flex flex-col">
+      <body className={`${josefinSans.className} min-h-screen flex flex-col`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
