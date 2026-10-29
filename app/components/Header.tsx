@@ -26,9 +26,9 @@ export default function Header() {
       >
         {mounted &&
           (resolvedTheme === "dark" ? (
-            <Image src="/icon-moon.png" alt="Moon" width={22} height={22} />
+            <Image src="/icon-moon.svg" alt="Moon" width={22} height={22} />
           ) : (
-            <Image src="/icon-sun.png" alt="Sun" width={22} height={22} />
+            <Image src="/icon-sun.svg" alt="Sun" width={22} height={22} />
           ))}
       </button>
     </header>
