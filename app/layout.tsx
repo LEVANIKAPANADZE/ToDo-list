@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
+import Header from "./components/Header";
 
 export const metadata: Metadata = {
   title: "Todo App",
@@ -17,12 +18,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-screen flex flex-col">
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
           enableSystem={false}
         >
+          <Header />
           {children}
         </ThemeProvider>
       </body>
