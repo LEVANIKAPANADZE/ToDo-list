@@ -2,31 +2,44 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-html,
-body {
-  min-height: 100%;
-}
-
-body {
+html {
   background-color: white;
-  background-image: url("/bg-mobile-light.jpg");
-  background-size: 100% auto;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
 }
 
-.dark body {
+html.dark {
   background-color: #171823;
+}
+
+body {
+  position: relative;
+  background-color: transparent;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  z-index: -1;
+  background-image: url("/bg-mobile-light.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+html.dark body::before {
   background-image: url("/bg-mobile-dark.jpg");
 }
 
 @media (min-width: 768px) {
-  body {
+  body::before {
+    height: 300px;
     background-image: url("/bg-desktop-light.jpg");
   }
 
-  .dark body {
+  html.dark body::before {
     background-image: url("/bg-desktop-dark.jpg");
   }
 }
