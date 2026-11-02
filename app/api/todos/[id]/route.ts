@@ -1,11 +1,27 @@
 import { todos } from "@/lib/todos";
 
+function getValidId(id: string): number | null {
+  const parsedId = Number(id);
+
+  return Number.isSafeInteger(parsedId) && parsedId > 0 ? parsedId : null;
+}
+
 export async function GET(
   _request: Request,
   { params }: { params: Promise<{ id: string }> },
 ) {
   const { id } = await params;
-  const todo = todos.find((todo) => todo.id === Number(id));
+  const validId = getValidId(id);
+
+  if (validId === null) {
+    return Response.json({ error: "Invalid todo ID" }, { status: 400 });
+  }
+
+  const todo = todos.find((todo) => todo.id === validId);
+
+  if (!todo) {
+    return Response.json({ error: "Todo not found" }, { status: 404 });
+  }
 
   return Response.json(todo);
 }
@@ -15,7 +31,13 @@ export async function PATCH(
   { params }: { params: Promise<{ id: string }> },
 ) {
   const { id } = await params;
-  const todo = todos.find((todo) => todo.id === Number(id));
+  const validId = getValidId(id);
+
+  if (validId === null) {
+    return Response.json({ error: "Invalid todo ID" }, { status: 400 });
+  }
+
+  const todo = todos.find((todo) => todo.id === validId);
 
   if (!todo) {
     return Response.json({ error: "Todo not found" }, { status: 404 });
@@ -57,7 +79,13 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> },
 ) {
   const { id } = await params;
-  const index = todos.findIndex((todo) => todo.id === Number(id));
+  const validId = getValidId(id);
+
+  if (validId === null) {
+    return Response.json({ error: "Invalid todo ID" }, { status: 400 });
+  }
+
+  const index = todos.findIndex((todo) => todo.id === validId);
 
   if (index === -1) {
     return Response.json({ error: "Todo not found" }, { status: 404 });
