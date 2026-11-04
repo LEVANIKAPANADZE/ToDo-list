@@ -1,1 +1,1 @@
-export const todos = [{ id: 1, todo: "study", completed: false }];
+export const todos = [];
