@@ -1,1 +1,7 @@
-export const todos = [];
+export type Todo = {
+  id: number;
+  todo: string;
+  completed: boolean;
+};
+
+export const todos: Todo[] = [];
