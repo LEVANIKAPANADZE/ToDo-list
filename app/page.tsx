@@ -157,7 +157,7 @@ export default function Home() {
       />
 
       <Filter
-        itemsLeft={data.filter((item) => !item.completed).length}
+        todos={data}
         activeFilter={activeFilter}
         setActiveFilter={setActiveFilter}
         onClearCompleted={handleClearCompleted}
