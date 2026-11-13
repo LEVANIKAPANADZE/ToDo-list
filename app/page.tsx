@@ -178,24 +178,30 @@ export default function Home() {
   });
 
   return (
-    <div>
+    <main className="mx-auto w-full max-w-[540px] xl:max-w-[700px] flex-1 px-6 pb-16">
       <Input todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
 
-      <List
-        data={visibleTodos}
-        handleDelete={handleDelete}
-        handleToggle={handleToggle}
-        handleReorder={handleReorder}
-        sortingDisabled={activeFilter !== "all"}
-      />
+      <div className="relative rounded-md bg-white shadow-[0_35px_50px_-15px_rgba(194,195,214,0.5)] max-md:mb-[100px] dark:bg-[#25273d] dark:shadow-[0_35px_50px_-15px_rgba(0,0,0,0.5)]">
+        <List
+          data={visibleTodos}
+          handleDelete={handleDelete}
+          handleToggle={handleToggle}
+          handleReorder={handleReorder}
+          sortingDisabled={activeFilter !== "all"}
+        />
 
-      <Filter
-        itemsLeft={data.filter((item) => !item.completed).length}
-        activeFilter={activeFilter}
-        setActiveFilter={setActiveFilter}
-        onClearCompleted={handleClearCompleted}
-        hasCompletedTodos={data.some((item) => item.completed)}
-      />
-    </div>
+        <Filter
+          itemsLeft={data.filter((item) => !item.completed).length}
+          activeFilter={activeFilter}
+          setActiveFilter={setActiveFilter}
+          onClearCompleted={handleClearCompleted}
+          hasCompletedTodos={data.some((item) => item.completed)}
+        />
+      </div>
+
+      <p className="mx-auto w-full text-center text-sm text-[#9495a5] md:mt-11 dark:text-[#5b5e7e]">
+        Drag and drop to reorder list
+      </p>
+    </main>
   );
 }

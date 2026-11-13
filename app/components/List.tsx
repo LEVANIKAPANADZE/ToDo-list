@@ -41,7 +41,9 @@ function SortableTodo({
     <div
       ref={ref}
       role="listitem"
-      className={`flex items-center gap-3 ${isDragging ? "opacity-50" : ""}`}
+      className={`group flex min-h-[52px] items-center gap-3 border-b border-[#e3e4f1] px-5 py-3 md:min-h-16 md:gap-6 md:px-6 dark:border-[#393a4b] ${
+        isDragging ? "opacity-50" : ""
+      }`}
     >
       <input
         type="checkbox"
@@ -50,6 +52,7 @@ function SortableTodo({
         aria-label={`Mark ${todo.todo} as ${
           todo.completed ? "active" : "completed"
         }`}
+        className="h-5 w-5 shrink-0 cursor-pointer appearance-none rounded-full border border-[#e3e4f1] bg-transparent transition-colors hover:border-[#a45cf0] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3a7bfd] checked:border-transparent checked:bg-[linear-gradient(135deg,#57ddff,#c058f3)] md:h-6 md:w-6 dark:border-[#393a4b]"
       />
 
       <span
@@ -58,8 +61,14 @@ function SortableTodo({
         tabIndex={sortingDisabled ? -1 : 0}
         aria-label={`Reorder ${todo.todo}`}
         aria-disabled={sortingDisabled}
-        className={`cursor-grab touch-none select-none active:cursor-grabbing focus-visible:outline-2 ${
-          todo.completed ? "line-through opacity-50" : ""
+        className={`min-w-0 flex-1 touch-none select-none break-words text-xs focus-visible:outline-2 focus-visible:outline-[#3a7bfd] md:text-lg ${
+          sortingDisabled
+            ? "cursor-default"
+            : "cursor-grab active:cursor-grabbing"
+        } ${
+          todo.completed
+            ? "text-[#d1d2da] line-through dark:text-[#4d5067]"
+            : "text-[#494c6b] dark:text-[#c8cbe7]"
         }`}
       >
         {todo.todo}
@@ -69,8 +78,15 @@ function SortableTodo({
         type="button"
         onClick={() => handleDelete(todo.id)}
         aria-label={`Delete ${todo.todo}`}
+        className="shrink-0 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-[#3a7bfd] md:opacity-0 md:transition-opacity md:group-hover:opacity-100"
       >
-        <Image src="/icon-cross.svg" alt="" width={18} height={18} />
+        <Image
+          src="/icon-cross.svg"
+          alt=""
+          width={18}
+          height={18}
+          className="h-3 w-3 md:h-[18px] md:w-[18px]"
+        />
       </button>
     </div>
   );
