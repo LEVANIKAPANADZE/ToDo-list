@@ -1,14 +1,6 @@
-export type TodoFilter = "all" | "active" | "completed";
+import type { FilterProps, TodoFilterOption } from "@/lib/types";
 
-type FilterProps = {
-  itemsLeft: number;
-  activeFilter: TodoFilter;
-  setActiveFilter: (filter: TodoFilter) => void;
-  onClearCompleted: () => void | Promise<void>;
-  hasCompletedTodos: boolean;
-};
-
-const filters: { label: string; value: TodoFilter }[] = [
+const filters: TodoFilterOption[] = [
   { label: "All", value: "all" },
   { label: "Active", value: "active" },
   { label: "Completed", value: "completed" },

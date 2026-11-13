@@ -1,11 +1,7 @@
 "use client";
 
 import { ThemeProvider } from "next-themes";
-import { ReactNode } from "react";
-
-type ProvidersProps = {
-  children: ReactNode;
-};
+import type { ProvidersProps } from "@/lib/types";
 
 export default function Providers({ children }: ProvidersProps) {
   return (

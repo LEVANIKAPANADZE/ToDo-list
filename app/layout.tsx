@@ -3,6 +3,7 @@ import { ThemeProvider } from "next-themes";
 import { Josefin_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
+import type { AppLayoutProps } from "@/lib/types";
 
 const josefinSans = Josefin_Sans({
   subsets: ["latin"],
@@ -18,9 +19,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: AppLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${josefinSans.className} min-h-screen flex flex-col`}>

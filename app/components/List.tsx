@@ -3,20 +3,7 @@
 import Image from "next/image";
 import { DragDropProvider } from "@dnd-kit/react";
 import { useSortable, isSortable } from "@dnd-kit/react/sortable";
-
-type Todo = {
-  id: number;
-  todo: string;
-  completed: boolean;
-};
-
-type ListProps = {
-  data: Todo[];
-  handleDelete: (id: number) => void;
-  handleToggle: (id: number, completed: boolean) => void;
-  handleReorder: (activeId: number, overId: number) => void | Promise<void>;
-  sortingDisabled?: boolean;
-};
+import type { ListProps, SortableTodoProps } from "@/lib/types";
 
 function SortableTodo({
   todo,
@@ -24,13 +11,7 @@ function SortableTodo({
   handleDelete,
   handleToggle,
   sortingDisabled,
-}: {
-  todo: Todo;
-  index: number;
-  handleDelete: ListProps["handleDelete"];
-  handleToggle: ListProps["handleToggle"];
-  sortingDisabled: boolean;
-}) {
+}: SortableTodoProps) {
   const { ref, handleRef, isDragging } = useSortable({
     id: todo.id,
     index,

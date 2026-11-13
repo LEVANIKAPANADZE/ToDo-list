@@ -1,8 +1,4 @@
-type InputProps = {
-  todo: string;
-  setTodo: React.Dispatch<React.SetStateAction<string>>;
-  handleAdd: () => void;
-};
+import type { InputProps } from "@/lib/types";
 
 export default function Input({ todo, setTodo, handleAdd }: InputProps) {
   return (

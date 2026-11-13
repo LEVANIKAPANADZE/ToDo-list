@@ -1,4 +1,5 @@
 import { todos } from "@/lib/todos";
+import type { TodoRouteContext } from "@/lib/types";
 
 function getValidId(id: string): number | null {
   const parsedId = Number(id);
@@ -8,7 +9,7 @@ function getValidId(id: string): number | null {
 
 export async function GET(
   _request: Request,
-  { params }: { params: Promise<{ id: string }> },
+  { params }: TodoRouteContext,
 ) {
   const { id } = await params;
   const validId = getValidId(id);
@@ -28,7 +29,7 @@ export async function GET(
 
 export async function PATCH(
   request: Request,
-  { params }: { params: Promise<{ id: string }> },
+  { params }: TodoRouteContext,
 ) {
   const { id } = await params;
   const validId = getValidId(id);
@@ -76,7 +77,7 @@ export async function PATCH(
 
 export async function DELETE(
   _request: Request,
-  { params }: { params: Promise<{ id: string }> },
+  { params }: TodoRouteContext,
 ) {
   const { id } = await params;
   const validId = getValidId(id);

@@ -3,13 +3,8 @@
 import { useState, useEffect, useCallback } from "react";
 import Input from "./components/Input";
 import List from "./components/List";
-import Filter, { type TodoFilter } from "./components/Filter";
-
-type Todo = {
-  id: number;
-  todo: string;
-  completed: boolean;
-};
+import Filter from "./components/Filter";
+import type { Todo, TodoFilter } from "@/lib/types";
 
 const url = "/api/todos";
 
