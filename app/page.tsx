@@ -49,9 +49,7 @@ export default function Home() {
     try {
       const response = await fetch(url, {
         method: "POST",
-        body: JSON.stringify({
-          todo: trimmedTodo,
-        }),
+        body: JSON.stringify({ todo: trimmedTodo }),
         headers: {
           "Content-Type": "application/json",
         },
@@ -107,12 +105,51 @@ export default function Home() {
     }
   }
 
+  async function handleReorder(
+    activeId: number,
+    overId: number,
+  ): Promise<void> {
+    if (activeFilter !== "all") return;
+
+    const activeIndex = data.findIndex((item) => item.id === activeId);
+    const overIndex = data.findIndex((item) => item.id === overId);
+
+    if (activeIndex === -1 || overIndex === -1 || activeIndex === overIndex) {
+      return;
+    }
+
+    const reorderedData = [...data];
+    const [movedTodo] = reorderedData.splice(activeIndex, 1);
+
+    reorderedData.splice(overIndex, 0, movedTodo);
+
+    setData(reorderedData);
+
+    try {
+      const response = await fetch(url, {
+        method: "PATCH",
+        body: JSON.stringify({
+          ids: reorderedData.map((item) => item.id),
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        console.error("Failed to save todo order");
+        await getTodos();
+      }
+    } catch (error) {
+      console.error(error);
+      await getTodos();
+    }
+  }
+
   async function handleClearCompleted(): Promise<void> {
     const completedTodos = data.filter((item) => item.completed);
 
-    if (completedTodos.length === 0) {
-      return;
-    }
+    if (completedTodos.length === 0) return;
 
     try {
       const responses = await Promise.all(
@@ -135,14 +172,8 @@ export default function Home() {
   }
 
   const visibleTodos = data.filter((item) => {
-    if (activeFilter === "active") {
-      return !item.completed;
-    }
-
-    if (activeFilter === "completed") {
-      return item.completed;
-    }
-
+    if (activeFilter === "active") return !item.completed;
+    if (activeFilter === "completed") return item.completed;
     return true;
   });
 
@@ -154,10 +185,12 @@ export default function Home() {
         data={visibleTodos}
         handleDelete={handleDelete}
         handleToggle={handleToggle}
+        handleReorder={handleReorder}
+        sortingDisabled={activeFilter !== "all"}
       />
 
       <Filter
-        todos={data}
+        itemsLeft={data.filter((item) => !item.completed).length}
         activeFilter={activeFilter}
         setActiveFilter={setActiveFilter}
         onClearCompleted={handleClearCompleted}

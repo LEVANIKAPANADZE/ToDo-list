@@ -1,10 +1,10 @@
 export type TodoFilter = "all" | "active" | "completed";
 
 type FilterProps = {
-  todos: { completed: boolean }[];
+  itemsLeft: number;
   activeFilter: TodoFilter;
   setActiveFilter: (filter: TodoFilter) => void;
-  onClearCompleted: () => void;
+  onClearCompleted: () => void | Promise<void>;
   hasCompletedTodos: boolean;
 };
 
@@ -15,14 +15,12 @@ const filters: { label: string; value: TodoFilter }[] = [
 ];
 
 export default function Filter({
-  todos,
+  itemsLeft,
   activeFilter,
   setActiveFilter,
   onClearCompleted,
   hasCompletedTodos,
 }: FilterProps) {
-  const itemsLeft = todos.filter((todo) => !todo.completed).length;
-
   return (
     <div className="flex items-center justify-between gap-4">
       <span>
