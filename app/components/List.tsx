@@ -66,7 +66,7 @@ function SortableTodo({
           alt=""
           width={18}
           height={18}
-          className="h-3 w-3 md:h-[18px] md:w-[18px]"
+          className="h-3 w-3 md:h-[18px] md:w-[18px] cursor-pointer"
         />
       </button>
     </div>
