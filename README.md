@@ -6,6 +6,30 @@ A modern, responsive, and interactive **Todo List application** built with **Nex
 
 ---
 
+## 🖥️ Preview
+
+### 🌙 Dark Mode
+
+**Desktop**
+
+![Dark Desktop](Screenshots/Dark_desktop.png)
+
+**Mobile**
+
+![Dark Mobile](Screenshots/Dark_mobile.png)
+
+### ☀️ Light Mode
+
+**Desktop**
+
+![Light Desktop](Screenshots/Light_desktop.png)
+
+**Mobile**
+
+![Light Mobile](Screenshots/Light_mobile.png)
+
+---
+
 ## 🚀 Features
 
 - 📝 **Task Management** — Create and manage your tasks with ease.
@@ -75,6 +99,11 @@ The application uses **Next.js Route Handlers** to handle task operations.
 
 ```text
 todo-list/
+├── Screenshots/
+│   ├── Dark_desktop.png
+│   ├── Dark_mobile.png
+│   ├── Light_desktop.png
+│   └── Light_mobile.png
 ├── app/
 │   ├── api/
 │   │   └── todos/
@@ -125,7 +154,7 @@ npm run dev
 
 Visit [http://localhost:3000](http://localhost:3000) in your browser. 🚀
 
-### Production build
+### Production Build
 
 ```bash
 npm run build
@@ -134,12 +163,17 @@ npm run start
 
 ---
 
+## ⚠️ Storage Note
+
+Tasks are currently stored in memory rather than a database. This means task data is reset when the server restarts.
+
+---
+
 ## 🧠 What I Learned
 
 - Building applications with the Next.js App Router.
 - Managing application state with React.
 - Creating API endpoints with Next.js Route Handlers.
-- Using TypeScript for safer and more maintainable code.
 - Implementing drag-and-drop functionality.
 - Creating responsive interfaces with Tailwind CSS.
 - Managing themes with next-themes.
@@ -153,7 +187,7 @@ npm run start
 
 Front-End Developer | React & Next.js Enthusiast
 
-[GitHub](https://github.com/LEVANIKAPANADZE)
+[GitHub Profile](https://github.com/LEVANIKAPANADZE)
 
 > "Build. Break. Learn. Repeat."
 
