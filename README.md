@@ -8,25 +8,11 @@ A modern, responsive, and interactive **Todo List application** built with **Nex
 
 ## 🖥️ Preview
 
-### 🌙 Dark Mode
+### 🌙 Dark Mode & ☀️ Light Mode
 
-**Desktop**
+\<p align="center"> \<img src="Screenshots/Dark_desktop.png" width="400" alt="Dark Mode Desktop" /> \<img src="Screenshots/Light_desktop.png" width="400" alt="Light Mode Desktop" /> \</p>
 
-![Dark Desktop](Screenshots/Dark_desktop.png)
-
-**Mobile**
-
-![Dark Mobile](Screenshots/Dark_mobile.png)
-
-### ☀️ Light Mode
-
-**Desktop**
-
-![Light Desktop](Screenshots/Light_desktop.png)
-
-**Mobile**
-
-![Light Mobile](Screenshots/Light_mobile.png)
+\<p align="center"> \<img src="Screenshots/Dark_mobile.png" width="180" alt="Dark Mode Mobile" /> \<img src="Screenshots/Light_mobile.png" width="180" alt="Light Mode Mobile" /> \</p>
 
 ---
 
